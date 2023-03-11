@@ -1,0 +1,39 @@
+img {
+    border-radius: 10px;
+    width: 320px;
+  }
+  
+  .select-input {
+    width: 108px; 
+    margin-bottom: 8px;
+  }
+  
+  .detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .detail-item {
+    margin-left: 128px;
+    margin-right: 128px;
+  }
+  
+  .back-link {
+    margin-top: 8px;
+  }
+  button {
+    background: #33B5E5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+button:hover {
+    background: #33B5FF;
+}
+button:active {
+    background: blue;
+}
