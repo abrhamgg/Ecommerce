@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationComponent } from './componenets/confirmation/confirmation.component';
 import { UserLoginComponent } from './componenets/user-login/user-login.component';
 import { UserRegistrationComponent } from './componenets/user-registration/user-registration.component';
+import { LandingPageComponent } from './componenets/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UserRegistrationComponent } from './componenets/user-registration/user-
     CartComponent,
     ConfirmationComponent,
     UserLoginComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

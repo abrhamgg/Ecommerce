@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color:lightslategrey;
+    background-color: #002;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

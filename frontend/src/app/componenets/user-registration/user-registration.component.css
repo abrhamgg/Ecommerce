@@ -1,5 +1,6 @@
 div{
     text-align: center;
+    align-items: center;
     
 }
 label{
@@ -10,3 +11,28 @@ section {
     margin-top: 20%;
     background-color: gray;
 }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group > input {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 8px;
+    width: 300px;
+  }
+  button {
+    background: #33B5E5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  button:hover {
+    background: #33B5FF;
+  }
+  button:active {
+    background: blue;
+  }

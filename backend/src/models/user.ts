@@ -46,4 +46,18 @@ export class UserStore {
             throw new Error(`Can't create user ${err}`)
         }
     }
+    async authenticate(username: string, password: string): Promise<User | number> {
+        const conn = await client.connect()
+        const sql = 'SELECT * FROM users WHERE username=($1)'
+        const result = await conn.query(sql, [username])
+
+        if (result.rows.length) {
+            const user = result.rows[0]
+            console.log(result.rows[0])
+            if (bcrypt.compareSync(password+pepper, user.password)) {
+                return user
+            }
+        }
+        return -1
+    }
 }

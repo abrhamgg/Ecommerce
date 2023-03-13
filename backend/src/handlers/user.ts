@@ -47,9 +47,38 @@ const create = async(req: Request, res: Response) => {
     }
 }
 
+const authenticate = async (req: Request, res: Response) => {
+    const user = {
+        username: req.body.username,
+        password: req.body.password
+    }
+    if (!req.body.username || !req.body.password) {
+        res.json({'message': 'invalid request parameters'})
+        res.status(400)
+        return;
+    }
+    try {
+        const u = await store.authenticate(user.username, user.password)
+        if (u !== -1) {
+            var token = jwt.sign({user: u}, String(process.env.TOKEN_SECRET));
+            res.cookie("SESSIONID", token, {httpOnly:true, secure:true})
+            res.json(token)
+        }
+        else {
+            res.status(401)
+            res.json({"message": "Authentication failed"})
+        }
+        
+    } catch (err) {
+        res.status(404)
+        res.json({err})
+    }
+}
+
 const user_routes = (app: express.Application) => {
     app.post('/users', create);
     app.get('/users', index);
+    app.post('/login', authenticate)
 }
 
 export default user_routes;

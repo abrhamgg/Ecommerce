@@ -3,16 +3,16 @@
         <h1>Login</h1>
         <form action="">
             <div class="form-group">
-                <label for="firstname">Email</label>
-                <input type="text" name="email" class="form-control">
+                <label for="firstname">Username</label>
+                <input [(ngModel)]="username" type="text" name="username" class="form-control">
             </div>
             <pre></pre>
             <div class="form-group">
                 <label for="firstname">Password</label>
-                <input type="text" name="password" class="form-control">
+                <input [(ngModel)]="password" type="text" name="password" class="form-control">
             </div>
             <pre></pre>
-            <button class="btn btn-primary" type="submit">Login</button>
+            <button (click)="login()" class="btn btn-primary" type="submit">Login</button>
             <br>
             <a routerLink="/register">Create An account</a>
         </form>
