@@ -10,4 +10,16 @@ section {
     margin-top: 20%;
     background-color: gray;
 }
-
+button {
+    background: #33B5E5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  button:hover {
+    background: #33B5FF;
+  }
+  button:active {
+    background: blue;
+  }

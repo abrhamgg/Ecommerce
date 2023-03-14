@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';
 import { User, UserStore } from '../models/user';
 import jwt from 'jsonwebtoken';
+import verifyAuthToken from '../middlewares/verify-token';
 
 const store = new UserStore()
 
@@ -65,20 +66,25 @@ const authenticate = async (req: Request, res: Response) => {
             res.json(token)
         }
         else {
-            res.status(401)
+            //res.status(401)
             res.json({"message": "Authentication failed"})
         }
         
     } catch (err) {
         res.status(404)
-        res.json({err})
+        res.json({message: 'Not Found'})
     }
+}
+
+const api = async(_req: Request, res: Response) => {
+    res.json('Hello World')
 }
 
 const user_routes = (app: express.Application) => {
     app.post('/users', create);
     app.get('/users', index);
-    app.post('/login', authenticate)
+    app.post('/login', authenticate);
+    app.get('/api', verifyAuthToken, api);
 }
 
 export default user_routes;

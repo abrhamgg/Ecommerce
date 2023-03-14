@@ -2,11 +2,13 @@
     <h1 class="logo">My Store</h1>
     <nav>
         <ul class="nav-links">
-            <li><a routerLink="">Products</a></li>
+            <li><a routerLink="products">Products</a></li>
             <li><input class="search-input" placeholder="Search Everything" type="text"></li>
             <li><button>Search</button></li>
             <li><a routerLink="cart">Cart</a></li>
+            <li><a routerLink="profile"><mat-icon class="account">account_circle</mat-icon>{{ name }}</a></li>
         </ul>
     </nav>
-    <a routerLink="login"><button>LogIn</button></a>
+    <a *ngIf="isLoggedIn()" routerLink="login"><button>LogIn</button></a>
+    <a *ngIf="!isLoggedIn()" routerLink="login" ><button (click)="removeSession()">LogOut</button></a>
 </header>

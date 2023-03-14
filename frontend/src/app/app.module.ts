@@ -10,11 +10,13 @@ import { ProudctItemComponent } from './componenets/proudct-item/proudct-item.co
 import { ProductItemDetailComponent } from './componenets/product-item-detail/product-item-detail.component';
 import { CartComponent } from './componenets/cart/cart.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConfirmationComponent } from './componenets/confirmation/confirmation.component';
 import { UserLoginComponent } from './componenets/user-login/user-login.component';
 import { UserRegistrationComponent } from './componenets/user-registration/user-registration.component';
 import { LandingPageComponent } from './componenets/landing-page/landing-page.component';
+import { AuthInterceptor } from './middlewares/auth_interceptor';
+import { UserProfileComponent } from './componenets/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { LandingPageComponent } from './componenets/landing-page/landing-page.co
     ConfirmationComponent,
     UserLoginComponent,
     UserRegistrationComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,13 @@ import { LandingPageComponent } from './componenets/landing-page/landing-page.co
     FormsModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

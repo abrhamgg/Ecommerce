@@ -7,6 +7,7 @@ import { ProductItemDetailComponent } from './componenets/product-item-detail/pr
 import { ProductListComponent } from './componenets/product-list/product-list.component';
 import { UserLoginComponent } from './componenets/user-login/user-login.component';
 import { UserRegistrationComponent } from './componenets/user-registration/user-registration.component';
+import { UserProfileComponent } from './componenets/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path: "products", component: ProductListComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "confirmation", component: ConfirmationComponent},
   {path: "login", component: UserLoginComponent},
   {path: "register", component: UserRegistrationComponent},
+  {path: "profile", component: UserProfileComponent},
   {path: '**', redirectTo: '/'}
 ];
 
