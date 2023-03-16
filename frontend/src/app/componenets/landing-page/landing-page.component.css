@@ -60,3 +60,40 @@ a:hover:after{
     width: 50%
 }
 
+/*
+.transparent_btn{
+    background-color: #333;
+    border: 2px solid #4b4b4b;
+    padding: 9px 5px!important;
+    border-radius: 5px!important;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: auto;
+}
+.mr10{
+    margin-right: 10px!important;
+}
+
+
+.white_btn {
+    background: #fff!important;
+    color: #000!important;
+}
+
+.black_btn, .generic_btn, .grey_btn, .themehover_btn, .white_btn {
+    border-radius: 5px;
+cursor: pointer;
+padding: 7px 20px;
+font-size: 1rem;
+margin: 2px;
+background: #d54e23;
+color: #fff;
+text-transform: capitalize;
+font-weight: 700;
+background: var(--c-theme-gradient);
+transition: all .2s ease-in-out;
+display: inline-block;
+border: none!important;
+    
+}
+*/

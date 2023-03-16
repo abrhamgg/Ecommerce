@@ -16,12 +16,25 @@ export class ProductListComponent implements OnInit {
     ){}
 
   ngOnInit(): void {
+    /*
+    if (userService.isLoggedOut()) {
+      this.router.navigate(["/login"]);
+    }*/
+
       this.dataService.getData().subscribe(data => {
         this.products = data
+        console.log(this.products)
       })
+      /*
+      this.products = this.getDataFromDb()
+      */
   }
 
   addProductToCart(product: Product) {
     this.cartService.addToCart(product);
+  }
+
+  getDataFromDb() {
+    return this.dataService.getDataFromDb();
   }
 }

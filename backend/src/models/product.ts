@@ -1,15 +1,17 @@
 import client from "../database";
 import bcrypt from 'bcrypt';
 import { type } from "os";
+import getUserId from "../utils/getUserId";
 
 const saltRounds = process.env.SALT_ROUND
 const pepper = process.env.BCRYPT_PASSWORD
 
 export type Product = {
     id?: number,
+    category_id? : number | string,
+    user_id? : number,
     name: string,
     price: number,
-    category: string,
     description: string,
     image?: string
 }
@@ -30,21 +32,14 @@ export class ProductStore {
 
     async create(p: Product) : Promise<Product> {
         try {
-            if(p.category && p.image) {
-                const sql = "INSERT INTO products (name, price, category, image, description) VALUES($1, $2, $3, $4, $5)"
-                const conn = await client.connect()
-                const result = await conn.query(sql, [p.name, p.price, p.category, p.image, p.description])
-                conn.release()
-
-                return result.rows[0]
-            }
-            const sql1 = "INSERT INTO products (name, price, description) VALUES($1, $2, $3) RETURNING *";
+            const sql1 = "INSERT INTO products (name, price, description, user_id, category_id, image) VALUES($1, $2, $3, $4, $5, $6) RETURNING *";
             const conn = await client.connect()
-            const result = await conn.query(sql1, [p.name, p.price, p.description]);
+            const result = await conn.query(sql1, [p.name, p.price, p.description, p.user_id, p.category_id, p.image]);
             conn.release()
-
+            
             return result.rows[0]
         } catch (err) {
+            console.log(err)
             throw new Error(`Cannot create a product ${err}`)
         }
     }

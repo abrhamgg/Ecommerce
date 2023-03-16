@@ -59,6 +59,7 @@ export class UserService {
       }
       const decoded:any = decode_jwt(String(res))
       console.log(decoded['user'])
+      console.log(decoded)
       this.logged_name = decoded['user']['username']
       this.setSession(res)
       this.router.navigate(["/products"])
@@ -97,6 +98,11 @@ export class UserService {
     return moment(expiresAt);
 }
   getName() {
-    return this.logged_name;
+    if (this.isLoggedIn()) {
+      const token = localStorage.getItem('id_token')
+      const decoded:any = decode_jwt(String(token))
+      return decoded['user']['username']
+    }
+    return 'Guest';
   }
 }

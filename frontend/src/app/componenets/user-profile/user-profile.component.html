@@ -3,10 +3,56 @@
     <img src="img.jpg" alt="John" style="width:100%">
     <h1>John Doe</h1>
     <p class="title">CEO & Founder, Example</p>
-    <p>Harvard University</p>
+    <br>
+    <br>
     <a href="#"><i class="fa fa-dribbble"></i></a>
     <a href="#"><i class="fa fa-twitter"></i></a>
     <a href="#"><i class="fa fa-linkedin"></i></a>
     <a href="#"><i class="fa fa-facebook"></i></a>
-    <p><button>Contact</button></p>
   </div>
+
+
+  <div class="card">
+    <h1>Add Product</h1>
+    <hr>
+    <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text"
+            class="form-control" id="name"
+            name="name" placeholder="Name"/>
+        </div>
+        <div class="form-group">
+          <label for="name">Price</label>
+          <input type="text"
+            class="form-control" id="Price"
+            name="price" placeholder="Price"/>
+        </div>
+        <div class="form-group">
+          <label for="name">Description</label>
+          <textarea id="description" name="description" rows="4" cols="50">
+            
+            </textarea>
+        </div>
+        <div class="form-group">
+          <label for="name">Image</label>
+          <input type="text"
+            class="form-control" id="image"
+            name="image" placeholder="URL"/>
+        </div>
+        <div class="form-group">
+          <label for="name">Category</label>
+          <select name="category" id="category">
+            <option value="Books">Books</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Cosmetics">Cosmetics</option>
+            <option value="Foods">Foods</option>
+            <option value="Gadgets">Gadgets</option>
+          </select>
+        </div>
+        <button style="margin-top: 10px;">
+          Add Product
+        </button>
+      </form>
+</div>

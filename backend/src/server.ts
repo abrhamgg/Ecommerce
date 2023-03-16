@@ -3,8 +3,7 @@ import bodyParser from 'body-parser';
 import user_routes from './handlers/user';
 import product_routes from './handlers/product';
 import cors from 'cors'
-import { privateDecrypt } from 'crypto';
-
+import category_routes from './handlers/category';
 
 const app: express.Application = express()
 const address: string = '0.0.0.0:3000'
@@ -24,6 +23,7 @@ app.listen(port, () => {
 })
 user_routes(app)
 product_routes(app)
+category_routes(app)
 
 
 export default app
