@@ -20,14 +20,15 @@ export class ProductListComponent implements OnInit {
     if (userService.isLoggedOut()) {
       this.router.navigate(["/login"]);
     }*/
-
+      /*
       this.dataService.getData().subscribe(data => {
         this.products = data
         console.log(this.products)
+      })*/
+      this.getDataFromDb().subscribe((data) => {
+        console.log(data);
+        this.products = data;
       })
-      /*
-      this.products = this.getDataFromDb()
-      */
   }
 
   addProductToCart(product: Product) {
@@ -35,6 +36,7 @@ export class ProductListComponent implements OnInit {
   }
 
   getDataFromDb() {
+    console.log(this.dataService.getDataFromDb())
     return this.dataService.getDataFromDb();
   }
 }

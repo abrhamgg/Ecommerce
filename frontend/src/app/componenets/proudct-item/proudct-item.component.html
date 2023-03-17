@@ -1,6 +1,6 @@
 <div class="product-container">
     <a [routerLink]="['/products', product?.id]">
-        <img class="product-image" src="{{ product?.url }}" alt="">
+        <img class="product-image" src="{{ product?.image }}" alt="">
     </a>
     <h4>{{ product?.name }}</h4>
     <p>${{ product?.price }}</p>
@@ -16,6 +16,7 @@
         <option value="9">9</option>
     </select>
     <div>
-        <button (click)="addToCart()">Add to cart</button>
+        <!--<button (click)="addToCart()">Add to cart</button>-->
+        <button>Add to cart</button>
     </div>
 </div>

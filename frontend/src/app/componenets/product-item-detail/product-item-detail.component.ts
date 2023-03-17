@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/models/newProduct';
 import { CartService } from 'src/app/services/cart.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -19,6 +19,7 @@ export class ProductItemDetailComponent implements OnInit {
     private cartService: CartService
     ) {}
   ngOnInit(): void {
+    /*
     this.route.paramMap.forEach((params) => {
       this.id = Number(params.get('id'));
 
@@ -27,8 +28,17 @@ export class ProductItemDetailComponent implements OnInit {
           this.product = data[this.id - 1];
         }
       })
+    })*/
+    this.route.paramMap.forEach((params) => {
+      this.id = Number(params.get('id'));
+
+      this.dataService.getSingleProduct(this.id).subscribe((data) => {
+        this.product = data
+      })
     })
+    
   }
+  /*
   addProductToCart () {
     if (this.quantity > 0 && this.product) {
       let new_product = this.product;
@@ -43,4 +53,5 @@ export class ProductItemDetailComponent implements OnInit {
       alert('Product with quantity 0 cannot be added to cart')
     }
   }
+  */
 }

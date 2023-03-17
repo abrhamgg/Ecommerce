@@ -1,6 +1,6 @@
 <div class="detail-container">
     <a>
-        <img  src="{{ product?.url }}" alt="">
+        <img  src="{{ product?.image }}" alt="">
     </a>
     <div class="detail-item">
         <h4>{{ product?.name }}</h4>
@@ -18,7 +18,8 @@
             <option value="9">9</option>
         </select>
         <div>
-            <button (click)="addProductToCart()">Add to cart</button>
+            <!--<button (click)="addProductToCart()">Add to cart</button>-->
+            <button>Add to cart</button>
         </div>
         <div>
             <a class="back-link" routerLink="/products">Back to product list</a>

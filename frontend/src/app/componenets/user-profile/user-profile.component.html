@@ -18,31 +18,31 @@
     <form>
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text"
+          <input type="text" [(ngModel)]="product.name"
             class="form-control" id="name"
             name="name" placeholder="Name"/>
         </div>
         <div class="form-group">
           <label for="name">Price</label>
           <input type="text"
-            class="form-control" id="Price"
+            class="form-control" id="Price" [(ngModel)]="product.price"
             name="price" placeholder="Price"/>
         </div>
         <div class="form-group">
           <label for="name">Description</label>
-          <textarea id="description" name="description" rows="4" cols="50">
+          <textarea [(ngModel)]="product.description" id="description" name="description" rows="4" cols="50">
             
             </textarea>
         </div>
         <div class="form-group">
           <label for="name">Image</label>
-          <input type="text"
+          <input type="text" [(ngModel)]="product.image"
             class="form-control" id="image"
             name="image" placeholder="URL"/>
         </div>
         <div class="form-group">
           <label for="name">Category</label>
-          <select name="category" id="category">
+          <select name="category" id="category" [(ngModel)]="category">
             <option value="Books">Books</option>
             <option value="Clothing">Clothing</option>
             <option value="Electronics">Electronics</option>
@@ -51,7 +51,7 @@
             <option value="Gadgets">Gadgets</option>
           </select>
         </div>
-        <button style="margin-top: 10px;">
+        <button (click)="addProduct()" style="margin-top: 10px;">
           Add Product
         </button>
       </form>

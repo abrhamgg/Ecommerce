@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/models/newProduct';
 import { NgModel } from '@angular/forms';
 
 @Component({
@@ -18,6 +18,7 @@ export class ProudctItemComponent {
   log () {
     console.log(this.quantity);
   }
+  /*
   addToCart() {
     if (this.quantity > 0 && this.product) {
       let new_product = this.product;
@@ -31,5 +32,5 @@ export class ProudctItemComponent {
     } else {
       alert('Product with 0  quantity cannot be added cart');
     }
-  }
+  }*/
 }

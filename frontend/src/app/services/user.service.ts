@@ -105,4 +105,12 @@ export class UserService {
     }
     return 'Guest';
   }
+
+  getUserId() {
+    if (this.isLoggedIn()) {
+      const token = localStorage.getItem('id_token')
+      const decoded:any = decode_jwt(String(token))
+      return decoded['user']['id']
+    }
+  }
 }
