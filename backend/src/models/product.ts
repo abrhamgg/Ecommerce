@@ -43,4 +43,17 @@ export class ProductStore {
             throw new Error(`Cannot create a product ${err}`)
         }
     }
+    async show(id: string): Promise<Product> {
+        /* returns a product with a specific id */
+        try {
+            const conn = await client.connect();
+            const sql = 'SELECT * FROM products WHERE id =($1)';
+            const result = await conn.query(sql, [id])
+            conn.release()
+
+            return result.rows[0]
+        } catch (err) {
+            throw new Error(`Could not find a product with id ${id}. Error: ${err}`)
+        }
+    }
 }
