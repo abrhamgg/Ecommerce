@@ -8,9 +8,14 @@ import getUserId from "../utils/getUserId";
 const store = new ProductStore()
 
 const index = async (_req: Request, res: Response) => {
-    const products = await store.index();
-    res.json(products)
-    return;
+    try {
+        const products = await store.index();
+        res.json(products)
+        return;
+    } catch(err) {
+        console.log(err)
+        res.json({message: "something went wrong"})
+    }
 }
 
 const create = async(req: Request, res: Response) => {
@@ -24,6 +29,10 @@ const create = async(req: Request, res: Response) => {
         return
     }
     try {
+        if (!req.body.name || !req.body.price || !req.body.description || !req.body.category_id) {
+            res.json({message: "Pleass fill out all required forms"});
+            return
+        }
         const authorizationHeader = req.headers.authorization
         const token:any = authorizationHeader?.split(' ')[1]
         const user_id = getUserId(token)

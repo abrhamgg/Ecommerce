@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { User } from '../models/user';
+import { CartItem } from '../models/cartItem';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Order } from '../models/order';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +18,58 @@ export class CartService {
     address: '',
     creditCard: '',
   }
-  constructor() { }
+  private baseUrl = 'http://0.0.0.0:3000/cartItem'
+  constructor(private http: HttpClient,
+              private router: Router
+    ) { }
 
+  addToCartItems(cartItem: CartItem) {
+    this.http.post(this.baseUrl, cartItem).subscribe((res) => {
+      if (Object.values(res)[0] === 'product added to cart') {
+        alert('product added to cart')
+      } else {
+        alert('Please fill out required forms');
+      }
+    })
+  }
+
+  getCartItems(): Observable<CartItem[]>{
+    return this.http.get<CartItem[]>(this.baseUrl)
+  }
+
+  getTotalCost(user_id:number): Observable<any>{
+    const url = `http://localhost:3000/cartItem/${user_id}/total`
+    return this.http.get(url)
+  }
+
+  removeItem(item_id: number) {
+    const url = `http://localhost:3000/cartItem/${item_id}`
+    return this.http.delete(url)
+  }
+
+  updateItem(item: CartItem) {
+    return this.http.patch(this.baseUrl, item)
+  }
+  clearCart() {
+    return this.http.delete(this.baseUrl)
+  }
+  completeCart(order: Order) {
+    const url = `http://localhost:3000/orders`
+    return this.http.post(url, order).subscribe((data) => {
+      if (Object.values(data)[0] !== 'cart has been checked out') {
+        console.log(Object.values(data)[0])
+        alert('something went wrong. please try again')
+      } else{
+        this.clearCart().subscribe((data)=> {
+          console.log(this.cartItems)
+        })
+        
+        alert('Order accepted')
+        this.router.navigate(["/confirmation"])
+      }
+    })
+  }
+  /*
   addToCart(item: Product) {
     //check if product already exist in cart Items
     const item_index = this.cartItems.findIndex((cartItem) => {
@@ -55,5 +110,5 @@ export class CartService {
 
   clearCart() {
     this.cartItems = []
-  }
+  }*/
 }

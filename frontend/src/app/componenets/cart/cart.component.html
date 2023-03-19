@@ -1,26 +1,18 @@
 <section class="cart-container">
     <div>
         <h2>Cart</h2>
-        <div class="cart-item" *ngFor="let item of cart">
+        <button (click)="clearCart()">Clear Cart</button>
+        <div class="cart-item" *ngFor="let item of cartItems">
           <div class="cart-item__image">
-            <img [src]="item.url" alt="" />
+            <img [src]="item.image" alt="" />
           </div>
           <div class="cart-item-details">
             <h3>{{ item.name }}</h3>
             <p>${{ item.price }}</p>
             <div>
-              <label for="quantity">Quantity</label>
-              <input
-                class="number-input"
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="0"
-                max="10"
-                [(ngModel)]="item.quantity"
-                (ngModelChange)="updateQuantity(item.id!, item.quantity)"
-              />
+              <label for="quantity">Quantity {{ item.quantity}}</label>
             </div>
+            <button (click)="removeItem(item.product_id)">remove</button>
           </div>
         </div>
         <h1>Total Cost: ${{ total }}</h1>
@@ -46,9 +38,69 @@
                 id="card" name="card" minlength="16"
                 maxlength="16"placeholder="16 Digits Credit Card Number"/>
             </div>
-            <button (click)="submitOrder()">
+            <button (click)="completeCart()">
+              Checkout
+            </button>
+          </form>
+    </div>
+</section>
+
+
+<!--
+  <section class="cart-container">
+    <div>
+        <h2>Cart</h2>
+        <div class="cart-item" *ngFor="let item of cartItems">
+          <div class="cart-item__image">
+            <img [src]="item.image" alt="" />
+          </div>
+          <div class="cart-item-details">
+            <h3>{{ item.name }}</h3>
+            <p>${{ item.price }}</p>
+            <div>
+              <label for="quantity">Quantity</label>
+              <input
+                class="number-input"
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="0"
+                max="10"
+                [(ngModel)]="quantity"
+                [(ngModel)]="item.quantity"
+                (ngModelChange)="updateQuantity(item, item.product_id, quantity)"
+              />
+            </div>
+            <button (click)="removeItem(item.product_id)">remove</button>
+          </div>
+        </div>
+        <h1>Total Cost: ${{ total }}</h1>
+      </div>
+    <div class="cart-panel">
+        <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" [(ngModel)]="user.fullName"
+                class="form-control" id="name"
+                name="name" placeholder="Minimum 3 characters"/>
+            </div>
+            <div class="form-group">
+              <label for="name">Address</label>
+              <input type="text"[(ngModel)]="user.address"
+                class="form-control" id="address"
+                name="address" placeholder="Minimum 6 characters"/>
+            </div>
+            <div class="form-group">
+              <label for="name">Credit Card</label>
+              <input type="text" [(ngModel)]="user.creditCard"
+                class="form-control"
+                id="card" name="card" minlength="16"
+                maxlength="16"placeholder="16 Digits Credit Card Number"/>
+            </div>
+            <button>
               Submit
             </button>
           </form>
     </div>
 </section>
+-->

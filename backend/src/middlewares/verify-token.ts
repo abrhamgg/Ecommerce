@@ -14,7 +14,7 @@ const verifyAuthToken = (req: Request, res: Response, next:NextFunction) => {
             })
         }
         const token = authorizationHeader?.split(' ')[1]
-        console.log(token)
+        //console.log(token)
         jwt.verify(String(token), String(process.env.TOKEN_SECRET))
         next()
     } catch (error) {

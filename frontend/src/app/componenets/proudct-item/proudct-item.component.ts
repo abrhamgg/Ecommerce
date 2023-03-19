@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CartItem } from 'src/app/models/cartItem';
 import { Product } from 'src/app/models/newProduct';
-import { NgModel } from '@angular/forms';
+import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-proudct-item',
@@ -12,11 +14,30 @@ export class ProudctItemComponent {
   @Output() new_product_emitter = new EventEmitter();
 
   quantity: number = 0;
+  constructor(private userService: UserService,
+              private cartService: CartService 
+    ) {}
   getProducts() {
     /*TODO*/
   }
   log () {
+    console.log(this.product)
     console.log(this.quantity);
+  }
+  addToCart() {
+    if (this.quantity > 0 && this.product) {
+
+      let cartItem: CartItem = {
+        user_id: this.userService.getUserId(),
+        product_id: Number(this.product.id),
+        quantity: this.quantity,
+        price: Number(this.product.price),
+        status: 'active'
+      }
+      this.cartService.addToCartItems(cartItem)
+    } else{
+      alert('Check your quantity')
+    }
   }
   /*
   addToCart() {

@@ -28,15 +28,15 @@ export class ProductListComponent implements OnInit {
       this.getDataFromDb().subscribe((data) => {
         console.log(data);
         this.products = data;
+        console.log(this.products)
       })
   }
-
+  /*
   addProductToCart(product: Product) {
     this.cartService.addToCart(product);
-  }
+  }*/
 
   getDataFromDb() {
-    console.log(this.dataService.getDataFromDb())
     return this.dataService.getDataFromDb();
   }
 }

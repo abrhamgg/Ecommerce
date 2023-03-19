@@ -19,7 +19,7 @@ if (ENV === 'dev') {
 } else if (ENV === 'test') {
     selected_database = POSTGRES_DB_TEST
 }
-
+selected_database = POSTGRES_DB_DEV
 let client = new Pool({
     host: POSTGRES_HOST,
     database: selected_database,

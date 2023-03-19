@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -12,13 +13,18 @@ export class ConfirmationComponent implements OnInit {
   name: string = ''
   constructor (
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
-  ngOnInit(): void {
+
+  ngOnInit(): void {/*
       this.name = this.cartService.getUser().fullName
-      this.price = this.cartService.getTotalCost()
+      this.price = this.cartService.getTotalCost()*/
+      this.cartService.getTotalCost(this.userService.getUserId()).subscribe((data)=> {
+        this.price = data.totalcost
+      })
   }
   goHome() {
-    this.cartService.clearCart()
+    /*this.cartService.clearCart()*/
   }
 }

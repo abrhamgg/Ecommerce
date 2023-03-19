@@ -28,6 +28,8 @@ export class DataService {
       console.log(res)
       if (Object.values(res)[0] === 'product created') {
         alert('product created')
+      } else {
+        alert('Please fill out required forms');
       }
     })
   }
