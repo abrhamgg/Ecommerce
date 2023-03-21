@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/models/newProduct';
 import { DataService } from 'src/app/services/data.service';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -9,7 +9,16 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products:[] | undefined
+  products:[] | Product[] | undefined
+  filter: string = ''
+  categoryDict = {
+    'Books': 1,
+    'Clothing': 2,
+    'Electronics': 3,
+    'Cosmetics': 4,
+    'Foods': 5,
+    'Gadgets': 6
+  }
   constructor(
     private dataService: DataService,
     private cartService: CartService
@@ -26,9 +35,7 @@ export class ProductListComponent implements OnInit {
         console.log(this.products)
       })*/
       this.getDataFromDb().subscribe((data) => {
-        console.log(data);
-        this.products = data;
-        console.log(this.products)
+          this.products = data;
       })
   }
   /*
@@ -38,5 +45,17 @@ export class ProductListComponent implements OnInit {
 
   getDataFromDb() {
     return this.dataService.getDataFromDb();
+  }
+  onFilter() {
+    if (this.filter != '0' && this.filter != ''){
+      console.log(this.filter)
+      this.dataService.getProductByCategory(Number(this.filter)).subscribe((data) => {
+        this.products = data
+      })
+    } else {
+      this.getDataFromDb().subscribe((data) => {
+        this.products = data;
+    })
+    }
   }
 }

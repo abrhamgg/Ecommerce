@@ -36,6 +36,7 @@
     "jasmine": "^4.5.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jsonwebtoken": "^9.0.0",
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "sequelize": "^6.29.3"
   }
 }

@@ -13,3 +13,32 @@
   display: flex;
   justify-content: center;
 }
+.category {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+h3 {
+  color: white;
+}
+select {
+  width: 140px; 
+  margin-bottom: 8px;
+  background-color: beige;
+}
+
+button {
+  margin-right: 20px;
+  background: #33B5E5;
+  color: white;
+  border: none;
+  padding: 4px 15px;
+  border-radius: 5px;
+}
+button:hover {
+  background: #33B5FF;
+}
+button:active {
+  background: blue;
+}

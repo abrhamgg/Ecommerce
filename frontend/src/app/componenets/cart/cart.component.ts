@@ -58,14 +58,14 @@ export class CartComponent implements OnInit {
     this.cartService.removeItem(Number(id)).subscribe((data) => {
       console.log(data)
     })
-    /*
     this.getCartItems().subscribe((data) => {
       this.cartItems = data
     })
     this.getTotalCost().subscribe((data) => {
       this.total = data.totalcost
-    })*/
-    this.router.navigate(["/products"])
+    })
+    /*this.router.navigate(["/products"])*/
+    window.location.reload()
   }
   clearCart() {
     if (this.cartItems.length !== 0) {

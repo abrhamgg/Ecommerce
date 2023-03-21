@@ -1,0 +1,17 @@
+#submitBtn {
+  border-radius: 25px;
+}
+
+p-5 {
+  background-color: var(--bs-gray-dark);
+}
+
+.p-5 {
+  background-color: var(--bs-dark);
+}
+
+.bg-white {
+  background-color: #000000;
+}
+
+

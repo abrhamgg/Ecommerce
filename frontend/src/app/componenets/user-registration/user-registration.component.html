@@ -1,3 +1,4 @@
+<!--
 <section>
     <div class="container">
         <h1>Register</h1>
@@ -33,5 +34,67 @@
             </div>
         </form>
      </div>
-</section>
- 
+</section>  
+-->
+<!--
+    <div class="container" style="position: absolute;left: 0;right: 0;top: 50%;transform: translateY(-50%);-ms-transform: translateY(-50%);-moz-transform: translateY(-50%);-o-transform: translateY(-50%);">
+    <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
+        <div class="col-sm-12 col-lg-10 col-xl-7 col-xxl-7 offset-lg-0 bg-white shadow-lg" style="border-radius: 5px;">
+            <div class="p-5">
+                <div class="text-center">
+                    <h4 class="text-dark mb-4"><span style="color: rgb(251, 251, 251);">Create an Account!</span></h4>
+                </div>
+                <form class="user">
+                    <div class="mb-3"><input [(ngModel)]="user.username" name="username" class="form-control form-control-user" type="text" placeholder="Username" required=""></div>
+                    <div class="mb-3"><input [(ngModel)]="user.email" name="email" class="form-control form-control-user" type="email" id="email" placeholder="Email Address" required=""></div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 mb-3 mb-sm-0"><input [(ngModel)]="user.password" name="password" class="form-control form-control-user" type="password" id="password" placeholder="Password" required="" style="margin-right: 346px;"></div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 mb-3 mb-sm-0"><input [(ngModel)]="user.firstname" name="firstname" class="form-control form-control-user" type="text" placeholder="First Name" required=""></div>
+                        <div class="col-sm-6"><input [(ngModel)]="user.lastname"  name="lastname" class="form-control form-control-user" type="text" placeholder="Last Name" required=""></div>
+                    </div>
+                    <div class="row mb-3">
+                        <p id="emailErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
+                        <p id="passwordErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
+                    </div><button (click)="onRegister()" class="btn btn-primary d-block btn-user w-100" id="submitBtn" type="submit">Register Account</button>
+                    <hr>
+                </form>
+                <div class="text-center"></div>
+                <div class="text-center"><a class="small" href="login.html">Already have an account? Login!</a></div>
+            </div>
+        </div>
+    </div>
+-->
+
+
+    <div class="container" style="position: absolute;left: 0;right: 0;top: 50%;transform: translateY(-50%);-ms-transform: translateY(-50%);-moz-transform: translateY(-50%);-o-transform: translateY(-50%);">
+    <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
+        <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
+            <div class="p-5">
+                <div class="text-center">
+                    <h4 class="text-dark mb-4">Create an Account!</h4>
+                </div>
+                <form class="user">
+                    <div class="mb-3"><input [(ngModel)]="user.username" class="form-control form-control-user" name="username" type="text" placeholder="Username" required=""></div>
+                    <div class="mb-3"><input [(ngModel)]="user.email" class="form-control form-control-user" name="email" type="email" id="email" placeholder="Email Address" required=""></div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 mb-3 mb-sm-0"><input name="password" [(ngModel)]="user.password"  class="form-control form-control-user" type="password" id="password" placeholder="Password" required="" style="margin-right: 346px;"></div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 mb-3 mb-sm-0"><input [(ngModel)]="user.firstname" name="firstname" class="form-control form-control-user" type="text" placeholder="First Name" required=""></div>
+                        <div class="col-sm-6"><input [(ngModel)]="user.lastname" name="lastname" class="form-control form-control-user" type="text" placeholder="Last Name" required=""></div>
+                    </div>
+                    <div class="row mb-3">
+                        <p id="emailErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
+                        <p id="passwordErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
+                    </div><button (click)="onRegister()" class="btn btn-primary d-block btn-user w-100" id="submitBtn" type="submit">Register Account</button>
+                    <hr>
+                </form>
+                <div class="text-center"></div>
+                <div class="text-center"><a class="small" routerLink="/login">Already have an account? Login!</a></div>
+            </div>
+        </div>
+    </div>
+
+

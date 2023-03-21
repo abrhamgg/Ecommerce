@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/newProduct';
 import { UserService } from 'src/app/services/user.service';
 import { DataService } from 'src/app/services/data.service';
@@ -8,12 +8,16 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit {
   product: Product = {
     name: '',
     price: 0,
     image: '',
     description: ''
+  }
+  user = {
+    firstname: '',
+    lastname: ''
   }
   category: string = ''
   categoryDict = {
@@ -28,6 +32,13 @@ export class UserProfileComponent {
   constructor (private userService: UserService,
           private dataService: DataService
     ) {}
+  
+    ngOnInit(): void {
+        const data = this.userService.getUser()
+        console.log(data)
+        this.user.firstname = data['firstname']
+        this.user.lastname = data['lastname']
+    }
 
   addProduct() {
     const user_id = this.userService.getUserId();

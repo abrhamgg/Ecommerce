@@ -71,9 +71,46 @@ const getProductById = async (req: Request, res: Response) => {
     }
 }
 
+const getProductByCategory= async (req: Request, res: Response) => {
+    try {
+        const category_id = req.params.category_id
+        const product = await store.showByCategory(Number(category_id));
+        if (!product) {
+            res.json({message: "product not found"})
+            return
+        }
+        res.json(product);
+    } catch (err) {
+        res.status(404).json({message: "product not found"})
+    }
+}
+
+const searchProduct = async(req:Request, res: Response) => {
+    const searchBody = req.query.searchBody as string
+    if (!searchBody) {
+        res.json({message: "no search input detected"})
+        return
+    }
+    try {
+        const result = await store.searchProduct(searchBody)
+        if (result.length == 0) {
+            res.json({message: "No Items Found"})
+            return
+        }
+        res.json(result)
+    } catch(err) {
+        console.log(err)
+        res.json({message: "error searching products"})
+        return
+    }
+}
+
 const product_routes = (app:express.Application) => {
+    app.get('/products/category/:category_id', getProductByCategory)
+    app.get('/search', searchProduct)
     app.get('/products', index)
     app.post('/products', create)
     app.get('/products/:id', getProductById)
+    
 }
 export default product_routes;

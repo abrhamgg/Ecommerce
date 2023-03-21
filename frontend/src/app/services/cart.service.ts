@@ -6,13 +6,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '../models/order';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   private cartItems: Product[] = [];
-  private totalCost: number = 0;
+  totalCost: number = 0;
   private user: User = {
     fullName: '',
     address: '',
@@ -20,7 +21,8 @@ export class CartService {
   }
   private baseUrl = 'http://0.0.0.0:3000/cartItem'
   constructor(private http: HttpClient,
-              private router: Router
+              private router: Router,
+              private userService: UserService
     ) { }
 
   addToCartItems(cartItem: CartItem) {

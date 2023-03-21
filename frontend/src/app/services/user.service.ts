@@ -113,4 +113,11 @@ export class UserService {
       return decoded['user']['id']
     }
   }
+  getUser() {
+    if (this.isLoggedIn()) {
+      const token = localStorage.getItem('id_token')
+      const decoded:any = decode_jwt(String(token))
+      return decoded['user']
+    }
+  }
 }

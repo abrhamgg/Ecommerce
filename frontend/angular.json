@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["moment"],
             "outputPath": "dist/my-store",
             "index": "src/index.html",
             "main": "src/main.ts",

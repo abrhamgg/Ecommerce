@@ -3,9 +3,9 @@
     <nav>
         <ul class="nav-links">
             <li><a routerLink="products">Products</a></li>
-            <li><input class="search-input" placeholder="Search Everything" type="text"></li>
-            <li><button>Search</button></li>
-            <li><a routerLink="cart">Cart</a></li>
+            <li><input class="search-input" placeholder="Search Everything" type="text" [(ngModel)]="searchItem" ></li>
+            <li><button (click)="onSearch()">Search</button></li>
+            <li><a routerLink="cart"><mat-icon class="account">shopping_cart</mat-icon>Cart {{ total }}</a></li>
             <li><a routerLink="profile"><mat-icon class="account">account_circle</mat-icon>{{ name }}</a></li>
         </ul>
     </nav>

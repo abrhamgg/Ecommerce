@@ -8,6 +8,8 @@ import { Product
 })
 export class DataService {
   baseUrl = 'http://0.0.0.0:3000/products'
+  searchBody = ''
+  totalCost = 0
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +24,9 @@ export class DataService {
   getSingleProduct(id: number): Observable<Product> {
     return this.http.get<Product>(this.baseUrl + `/${id}`)
   }
-
+  getProductByCategory(category_id: number): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl + `/category/${category_id}`)
+  }
   addProductToDb(newProduct: Product) {
     this.http.post(this.baseUrl, newProduct).subscribe((res) => {
       console.log(res)
