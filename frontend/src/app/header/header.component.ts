@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css',"assets/bootstrap/css/bootstrap.min.css", "assets/css/Navbar-Right-Links-Dark-icons.css"]
 })
 export class HeaderComponent implements OnInit {
  constructor(private user: UserService, private dataService: DataService, private cartService: CartService) {}
