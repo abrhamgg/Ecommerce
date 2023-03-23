@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import decode_jwt from '../utils/decode-jwt';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +27,7 @@ export class UserService {
       console.log(res);
       if (Object.values(res)[0] === 'invalid request parameters') {
         alert('please fill out all the required forms')
+        /*daypilot.Modal.alert("please fill ou forms")*/
       } else if (Object.values(res)[0] === 'User Exists. Please use a different username') {
         alert('User already exists.')
       } else {
