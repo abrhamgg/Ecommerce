@@ -37,4 +37,12 @@ export class DataService {
       }
     })
   }
+  getProductByUser(user_id: number): Observable<Product[]> {
+    const url = `http://localhost:3000/products/user/${user_id}`
+    return this.http.get<Product[]>(url)
+  }
+  removeProduct(id:number) {
+    const url = `http://localhost:3000/products/${id}`
+    return this.http.delete(url)
+  }
 }

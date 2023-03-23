@@ -1,5 +1,5 @@
 
-<div class="card">
+<div class="card-p">
     <h1>{{user.firstname}}  {{ user.lastname }}</h1>
     <br>
     <br>
@@ -9,8 +9,18 @@
     <a href="#"><i class="fa fa-facebook"></i></a>
   </div>
 
+  <div class="container-main">
+    <div *ngFor="let item of myproduct" class="card">
+      <img height="200px" width="300px" [src]="item.image" alt="Denim Jeans" style="width:100%">
+      <h1>{{ item.name }}</h1>
+      <p class="price">${{ item.price }}</p>
+      <button style="border-radius: 5px;" (click)="removeItem(item.id)">Remove</button>
+    </div>
+  </div>
+ 
+  
 
-  <div class="card">
+  <div style="margin-top: 15px;" class="card-p">
     <h1>Add Product</h1>
     <hr>
     <form>
@@ -49,7 +59,7 @@
             <option value="Gadgets">Gadgets</option>
           </select>
         </div>
-        <button (click)="addProduct()" style="margin-top: 10px;">
+        <button (click)="addProduct()" style="margin-top: 10px; background-color: green;">
           Add Product
         </button>
       </form>

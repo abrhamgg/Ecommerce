@@ -4,9 +4,11 @@
         <button (click)="onSearch()">Search</button>
     </span>
 </div>
+
 <div class="category">
-    <h3>Filter by</h3>
+    <h3>Filter by category</h3>
     <select [(ngModel)]="filter" name="category" id="">
+        <h4>Category</h4>
         <option value="0">All</option>
         <option value=1>Books</option>
         <option value=2>Clothing</option>
@@ -14,7 +16,7 @@
         <option value=4>Cosmetics</option>
         <option value=5>Foods</option>
         <option value=6>Gadgets</option>
-    </select>
+    </select>   
     <button (click)="onFilter()">filter</button>
 </div>
 

@@ -71,6 +71,30 @@ const getProductById = async (req: Request, res: Response) => {
     }
 }
 
+const deleteProductById = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id
+        const product = await store.delete(id);
+        res.json(product);
+    } catch (err) {
+        res.status(404).json({message: "product not found"})
+    }
+}
+
+const getProductByUser = async(req:Request, res:Response) => {
+    try {
+        const user_id = req.params.user_id;
+        if (!user_id) {
+            res.json({message: "Unknow user_id"})
+            return
+        }
+        const products = await store.getProductByUser(Number(user_id))
+        res.json(products)
+    } catch(err) {
+        res.json({message: `error feteching product by user ${err}`})
+    }
+}
+
 const getProductByCategory= async (req: Request, res: Response) => {
     try {
         const category_id = req.params.category_id
@@ -111,6 +135,8 @@ const product_routes = (app:express.Application) => {
     app.get('/products', index)
     app.post('/products', create)
     app.get('/products/:id', getProductById)
+    app.get('/products/user/:user_id', getProductByUser)
+    app.delete('/products/:id', deleteProductById)
     
 }
 export default product_routes;

@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     // If user isnot logged in it will redirect the user to login page
+    
     if (this.userService.isLoggedOut()) {
       this.router.navigate(["/login"]);
     }

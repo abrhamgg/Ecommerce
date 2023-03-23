@@ -1,4 +1,4 @@
-.card {
+.card-p {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
@@ -67,4 +67,34 @@
     margin-bottom: 8px;
     padding: 8px;
     width: 300px;
+  }
+
+
+
+  .card-p {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    max-height: 100px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+ 
+  .container-main{
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 64px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  gap: 20px;
+  }
+  
+  .card {
+    max-width: 250px;
   }

@@ -75,6 +75,31 @@ export class ProductStore {
             throw new Error(`Could not find a product with id ${id}. Error: ${err}`)
         }
     }
+    async delete(id: string): Promise<void> {
+        /* returns a product with a specific id */
+        try {
+            const conn = await client.connect();
+            const sql = 'DELETE FROM products WHERE id =($1)';
+            const result = await conn.query(sql, [id])
+            conn.release()
+
+            return result.rows[0]
+        } catch (err) {
+            throw new Error(`Could not delete a product with id ${id}. Error: ${err}`)
+        }
+    }
+    async getProductByUser(user_id: number): Promise<Product[]> {
+        try{
+            const conn = await client.connect();
+            const sql = 'SELECT * FROM products WHERE user_id =($1)';
+            const result = await conn.query(sql, [user_id])
+            conn.release()
+
+            return result.rows
+        } catch(err) {
+            throw new Error(`Could not find a product with user id : ${user_id}: Error => ${err}`)
+        }
+    }
     async searchProduct(searchBody: string): Promise<Product[]> {
         const sequelize = new Sequelize(database, user, password, {
             host: host,

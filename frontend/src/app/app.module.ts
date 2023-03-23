@@ -37,7 +37,7 @@ import { UserProfileComponent } from './componenets/user-profile/user-profile.co
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [
     {
